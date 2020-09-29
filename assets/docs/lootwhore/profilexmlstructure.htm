@@ -1,0 +1,298 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:8.0pt;
+	margin-left:0in;
+	line-height:105%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+.MsoChpDefault
+	{font-size:10.0pt;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+</head>
+
+<body bgcolor=black lang=EN-US>
+
+<div class=WordSection1>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:105%;color:#ED7D31'>Lootwhore Profile XML Layout</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#ED7D31'>&lt;lootwhore&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#ED7D31'>            </span><span style='font-size:14.0pt;
+line-height:105%;color:#70AD47'>&lt;!--Settings is used to configure things not
+tied to specific items.  You can omit any setting, or even the entire section,
+and the values listed below will be used. --&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;text-indent:.5in'><span
+style='font-size:14.0pt;line-height:105%;color:#4472C4'> &lt;settings&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%'>            </span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%'>                        <span style='color:#70AD47'>&lt;!-- DefaultAction
+determines how Lootwhore will react to any item in treasure pool without an
+item-specific setting.  It can be set to </span><span style='color:white'>lot</span><span
+style='color:#70AD47'>, </span><span style='color:white'>pass</span><span
+style='color:#70AD47'>, or </span><span style='color:white'>ignore</span><span
+style='color:#70AD47'>. --&gt;</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#70AD47'>                        </span><span
+style='font-size:14.0pt;line-height:105%;color:yellow'>&lt;defaultaction&gt;ignore&lt;/defaultaction&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#70AD47'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#70AD47'>                        &lt;!-- SmartPass
+setting can be </span><span style='font-size:14.0pt;line-height:105%;
+color:white'>disabled</span><span style='font-size:14.0pt;line-height:105%;
+color:#70AD47'>, </span><span style='font-size:14.0pt;line-height:105%;
+color:white'>listonly</span><span style='font-size:14.0pt;line-height:105%;
+color:#70AD47'>, or </span><span style='font-size:14.0pt;line-height:105%;
+color:white'>everyone</span><span style='font-size:14.0pt;line-height:105%;
+color:#70AD47'>.  When smartpass is set to everyone, lootwhore will pass any
+item when anyone besides you lots it.  When set to listonly, lootwhore will
+pass any item lotted by anyone on your whitelist. --&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#70AD47'>                        </span><span
+style='font-size:14.0pt;line-height:105%;color:yellow'>&lt;smartpass&gt;disabled&lt;/smartpass&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#70AD47'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#70AD47'>                        &lt;!-- Rarepass
+setting can be </span><span style='font-size:14.0pt;line-height:105%;
+color:white'>disabled </span><span style='font-size:14.0pt;line-height:105%;
+color:#70AD47'>or </span><span style='font-size:14.0pt;line-height:105%;
+color:white'>enabled</span><span style='font-size:14.0pt;line-height:105%;
+color:#70AD47'>.  When rarepass is enabled, lootwhore will pass any rare marked
+item you already have on your character.  This does not count items in storage
+slips or NPC storage. --&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#70AD47'>                        </span><span
+style='font-size:14.0pt;line-height:105%;color:yellow'>&lt;rarepass&gt;disabled&lt;/rarepass&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#70AD47'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#70AD47'>                        &lt;!-- Zonereset
+setting can be </span><span style='font-size:14.0pt;line-height:105%;
+color:white'>disabled </span><span style='font-size:14.0pt;line-height:105%;
+color:#70AD47'>or </span><span style='font-size:14.0pt;line-height:105%;
+color:white'>enabled</span><span style='font-size:14.0pt;line-height:105%;
+color:#70AD47'>.  If zonereset is enabled, lootwhore will reset profile(and
+disable zonereset in the process) the next time you zone.  This is recommended
+whenever using a defaultaction of lot or pass, so you do not forget about it
+when going to your next content. --&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#70AD47'>                        </span><span
+style='font-size:14.0pt;line-height:105%;color:yellow'>&lt;zonereset&gt;disabled&lt;/zonereset&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>            </span><span style='font-size:14.0pt;
+line-height:105%;color:#4472C4'>&lt;/settings&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#4472C4'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#4472C4'>            </span><span style='font-size:14.0pt;
+line-height:105%;color:#70AD47'>&lt;!--Item list is used to specify items that
+should have a behavior separate from the default action when in treasure pool.
+--&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#70AD47'>            </span><span style='font-size:14.0pt;
+line-height:105%;color:#4472C4'>&lt;itemlist&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#4472C4'>                        </span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#4472C4'>                        </span><span
+style='font-size:14.0pt;line-height:105%;color:#70AD47'>&lt;!-- Items are
+specified by ID, but an auto generated profile will leave their name in
+comments for ease of editing. Each item may be set to to </span><span
+style='font-size:14.0pt;line-height:105%;color:white'>lot</span><span
+style='font-size:14.0pt;line-height:105%;color:#70AD47'>, </span><span
+style='font-size:14.0pt;line-height:105%;color:white'>pass</span><span
+style='font-size:14.0pt;line-height:105%;color:#70AD47'>, or </span><span
+style='font-size:14.0pt;line-height:105%;color:white'>ignore</span><span
+style='font-size:14.0pt;line-height:105%;color:#70AD47'>. --&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#70AD47'>                        </span><span
+style='font-size:14.0pt;line-height:105%;color:yellow'>&lt;item id=”</span><span
+style='font-size:14.0pt;line-height:105%;color:#F4B183'>1453</span><span
+style='font-size:14.0pt;line-height:105%;color:yellow'>”&gt;</span><span
+style='font-size:14.0pt;line-height:105%;color:white'>lot</span><span
+style='font-size:14.0pt;line-height:105%;color:yellow'>&lt;/item&gt; </span><span
+style='font-size:14.0pt;line-height:105%;color:#70AD47'>&lt;!-- M. Silverpiece
+--&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>                        &lt;item id=”</span><span
+style='font-size:14.0pt;line-height:105%;color:#F4B183'>1452</span><span
+style='font-size:14.0pt;line-height:105%;color:yellow'>”&gt;</span><span
+style='font-size:14.0pt;line-height:105%;color:white'>lot</span><span
+style='font-size:14.0pt;line-height:105%;color:yellow'>&lt;/item&gt; </span><span
+style='font-size:14.0pt;line-height:105%;color:#70AD47'>&lt;!-- O. Bronzepiece
+--&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>                        &lt;item id=”</span><span
+style='font-size:14.0pt;line-height:105%;color:#F4B183'>3497</span><span
+style='font-size:14.0pt;line-height:105%;color:yellow'>”&gt;</span><span
+style='font-size:14.0pt;line-height:105%;color:white'>pass</span><span
+style='font-size:14.0pt;line-height:105%;color:yellow'>&lt;/item&gt; </span><span
+style='font-size:14.0pt;line-height:105%;color:#70AD47'>&lt;!-- Forgotten Step
+--&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>            </span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>            </span><span style='font-size:14.0pt;
+line-height:105%;color:#4472C4'>&lt;/itemlist&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#4472C4'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#4472C4'>            </span><span style='font-size:14.0pt;
+line-height:105%;color:#70AD47'>&lt;!-- Unlike lootwhore in v3, drops and stores
+each receive their own list.  This allows you to do combinations like lot and
+drop or pass and store.  --&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#70AD47'>            &lt;!-- List items to be
+automatically dropped. --&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#4472C4'>            &lt;droplist&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#4472C4'>                        </span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#4472C4'>                        </span><span
+style='font-size:14.0pt;line-height:105%;color:#70AD47'>&lt;!--Items are still
+specified by ID, but as there are no other attributes or content, the tag
+should be self closing.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#4472C4'>                        </span><span
+style='font-size:14.0pt;line-height:105%;color:yellow'>&lt;item id=”</span><span
+style='font-size:14.0pt;line-height:105%;color:#F4B183'>4249</span><span
+style='font-size:14.0pt;line-height:105%;color:yellow'>” /&gt; </span><span
+style='font-size:14.0pt;line-height:105%;color:#70AD47'>&lt;!-- S. Stratagems
+--&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>            </span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>            </span><span style='font-size:14.0pt;
+line-height:105%;color:#4472C4'>&lt;/droplist&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#70AD47'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#70AD47'>            &lt;!-- List items to be stored. 
+The bags used for storing can be configured in your config xml. --&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#4472C4'>            &lt;storelist&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#4472C4'>                        </span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#4472C4'>                        </span><span
+style='font-size:14.0pt;line-height:105%;color:#70AD47'>&lt;!--Items are still
+specified by ID, but as there are no other attributes or content, the tag
+should be self closing.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#70AD47'>                        </span><span
+style='font-size:14.0pt;line-height:105%;color:yellow'>&lt;item id=”</span><span
+style='font-size:14.0pt;line-height:105%;color:#F4B183'>1453</span><span
+style='font-size:14.0pt;line-height:105%;color:yellow'>” /&gt; </span><span
+style='font-size:14.0pt;line-height:105%;color:#70AD47'>&lt;!-- M. Silverpiece
+--&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>                        &lt;item id=”</span><span
+style='font-size:14.0pt;line-height:105%;color:#F4B183'>1452</span><span
+style='font-size:14.0pt;line-height:105%;color:yellow'>” /&gt; </span><span
+style='font-size:14.0pt;line-height:105%;color:#70AD47'>&lt;!-- O. Bronzepiece
+--&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>                        &lt;item id=”</span><span
+style='font-size:14.0pt;line-height:105%;color:#F4B183'>3497</span><span
+style='font-size:14.0pt;line-height:105%;color:yellow'>” /&gt; </span><span
+style='font-size:14.0pt;line-height:105%;color:#70AD47'>&lt;!-- Forgotten Step
+--&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>            </span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>            </span><span style='font-size:14.0pt;
+line-height:105%;color:#4472C4'>&lt;/storelist&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#ED7D31'>&lt;/lootwhore&gt;</span></p>
+
+</div>
+
+</body>
+
+</html>

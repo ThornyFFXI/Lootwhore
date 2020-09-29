@@ -1,0 +1,185 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:8.0pt;
+	margin-left:0in;
+	line-height:105%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+.MsoChpDefault
+	{font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+</head>
+
+<body bgcolor=black lang=EN-US>
+
+<div class=WordSection1>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:105%;color:#ED7D31'>Lootwhore Config XML Layout</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#ED7D31'>&lt;lwconfig&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;text-indent:.5in'><span
+style='font-size:14.0pt;line-height:105%;color:#4472C4'> </span><span
+style='font-size:14.0pt;line-height:105%;color:#70AD47'>&lt;!--You can skip any
+of the subnodes in settings, or even skip settings entirely.  If a setting is
+not specified, the values here will be used as default.--&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#4472C4'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;settings&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#4472C4'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;text-indent:.5in'><span style='font-size:14.0pt;line-height:
+105%;color:#70AD47'>&lt;!-- List of container indices lootwhore can use for
+autostore. --&gt;</span></p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;text-indent:.5in'><span style='font-size:14.0pt;line-height:
+105%;color:yellow'>&lt;storebags&gt;</span><span style='font-size:14.0pt;
+line-height:105%;color:white'>5,6,7,8,10,11,12</span><span style='font-size:
+14.0pt;line-height:105%;color:yellow'>&lt;/storebags&gt; </span></p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;text-indent:.5in'><span style='font-size:14.0pt;line-height:
+105%;color:yellow'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;text-indent:.5in'><span style='font-size:14.0pt;line-height:
+105%;color:#70AD47'>&lt;!--Must be enabled or disabled.  Determines if
+lootwhore will automatically combine stacks in inventory. --&gt;</span></p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;text-indent:.5in'><span style='font-size:14.0pt;line-height:
+105%;color:yellow'>&lt;autostack&gt;</span><span style='font-size:14.0pt;
+line-height:105%;color:white'>enabled</span><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>&lt;/autostack&gt; </span></p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;text-indent:.5in'><span style='font-size:14.0pt;line-height:
+105%;color:yellow'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;text-indent:.5in'><span style='font-size:14.0pt;line-height:
+105%;color:#70AD47'>&lt;!-- This is primarily used for darkstar or topaz servers. 
+List bag indices seperated by comma.  Lootwhore will treat any listed bags as
+if you have access to them instead of honoring the memory checks. --&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;forceenablebags&gt;&lt;/forceenablebags&gt; </span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;text-indent:.5in'><span style='font-size:14.0pt;line-height:
+105%;color:yellow'> </span><span style='font-size:14.0pt;line-height:105%;
+color:#70AD47'>&lt;!-- When enabled, lootwhore can store in storage while at a
+nomad moogle.  This still requires storage to be in the storebags list.  Note
+that you cannot legitimately access storage when at a nomad moogle. --&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;nomadstorage&gt;</span><span style='font-size:14.0pt;line-height:105%;
+color:white'>disabled</span><span style='font-size:14.0pt;line-height:105%;
+color:yellow'>&lt;/nomadstorage&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>                        </span><span
+style='font-size:14.0pt;line-height:105%;color:#70AD47'>&lt;!-- Determines the
+maximum amount of times lootwhore will try to pass or lot an item if the server
+fails to tell you the pass or lot succeeded.  Note that the server not telling
+you does not mean it did not succeed, so an excessively high value is likely
+not helpful. --&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#70AD47'>                        </span><span
+style='font-size:14.0pt;line-height:105%;color:yellow'>&lt;maxretry&gt;</span><span
+style='font-size:14.0pt;line-height:105%;color:white'>3</span><span
+style='font-size:14.0pt;line-height:105%;color:yellow'>&lt;/maxretry&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>            </span><span style='font-size:14.0pt;
+line-height:105%;color:#4472C4'>&lt;/settings&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#4472C4'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#4472C4'>            </span><span style='font-size:14.0pt;
+line-height:105%;color:#70AD47'>&lt;!-- A whitelist is used to determine which
+characters smartpass will trigger on when in listonly mode.  Simply list each
+character name in an </span><span style='font-size:14.0pt;line-height:105%;
+color:yellow'>entry </span><span style='font-size:14.0pt;line-height:105%;
+color:#70AD47'>tag.  You can skip this if you do not plan to use listonly mode.
+--&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#4472C4'>            &lt;whitelist&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#4472C4'>                        </span><span
+style='font-size:14.0pt;line-height:105%;color:yellow'>&lt;entry&gt;</span><span
+style='font-size:14.0pt;line-height:105%;color:white'>Atomos</span><span
+style='font-size:14.0pt;line-height:105%;color:yellow'>&lt;/entry&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>                        &lt;entry&gt;</span><span
+style='font-size:14.0pt;line-height:105%;color:white'>Thorny</span><span
+style='font-size:14.0pt;line-height:105%;color:yellow'>&lt;/entry&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>            </span><span style='font-size:14.0pt;
+line-height:105%;color:#4472C4'>&lt;/whitelist&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#4472C4'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#ED7D31'>&lt;/lwconfig&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'>&nbsp;</p>
+
+</div>
+
+</body>
+
+</html>

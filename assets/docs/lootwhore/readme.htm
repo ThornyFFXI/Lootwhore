@@ -1,0 +1,303 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:8.0pt;
+	margin-left:0in;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+.MsoPapDefault
+	{margin-bottom:8.0pt;
+	line-height:107%;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+</head>
+
+<body bgcolor=black lang=EN-US>
+
+<div class=WordSection1>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:107%;color:#ED7D31'>Lootwhore</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:white'>Lootwhore is a plugin that allows you to automate
+lotting, passing, dropping items from inventory, and moving stacks of items
+from inventory to other bags.  This is done through a profile file, which can
+be edited manually(see </span><span style='font-size:14.0pt;line-height:107%;
+color:#4472C4'>ashita/docs/lootwhore/profilexmlstructure.xml</span><span
+style='font-size:14.0pt;line-height:107%;color:white'>) or by using typed
+commands ingame.  Profiles should be stored in </span><span style='font-size:
+14.0pt;line-height:107%;color:#4472C4'>ashita/config/lootwhore/profiles</span><span
+style='font-size:14.0pt;line-height:107%;color:white'>.  Lootwhore also has a
+configuration file that allows you to tweak several settings that cannot be
+changed from inside the game(see </span><span style='font-size:14.0pt;
+line-height:107%;color:#4472C4'>ashita/docs/lootwhore/configxmlstructure.xml</span><span
+style='font-size:14.0pt;line-height:107%;color:white'>).  Configuration files
+should be stored as </span><span style='font-size:14.0pt;line-height:107%;
+color:#4472C4'>ashita/config/lootwhore/default.xml </span><span
+style='font-size:14.0pt;line-height:107%;color:white'>or </span><span
+style='font-size:14.0pt;line-height:107%;color:#4472C4'>ashita/config/lootwhore/Playername.xml</span><span
+style='font-size:14.0pt;line-height:107%;color:white'>.  Lootwhore will prefer
+a player-specific config file to the default file, allowing you to change
+settings for each character.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:107%;color:#ED7D31'>Commands</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:white'>All commands can be prefixed with </span><span
+style='font-size:14.0pt;line-height:107%;color:#4472C4'>/lw </span><span
+style='font-size:14.0pt;line-height:107%;color:white'>or </span><span
+style='font-size:14.0pt;line-height:107%;color:#4472C4'>/lootwhore</span><span
+style='font-size:14.0pt;line-height:107%;color:white'>.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:107%;color:#ED7D31'>/lw profile [Required: Profile Name]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:white'>Load a profile, containing settings to determine
+how items should be treated.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:107%;color:#ED7D31'>/lw export [</span><span style='font-size:24.0pt;
+line-height:107%;color:#FFC000'>Optional: Profile Name</span><span
+style='font-size:24.0pt;line-height:107%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:white'>Saves the current settings to a profile.  If you
+already have a profile loaded, you can omit name to overwrite it.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:107%;color:#ED7D31'>/lw reset</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:white'>Resets all profile settings.  This does not reset
+configuration.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:107%;color:#ED7D31'>/lw default [</span><span style='font-size:
+24.0pt;line-height:107%;color:#70AD47'>Required: lot/pass/ignore</span><span
+style='font-size:24.0pt;line-height:107%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:white'>Sets the default action to be performed on items in
+treasure pool.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:107%;color:#ED7D31'>/lw smartpass [</span><span style='font-size:
+24.0pt;line-height:107%;color:#70AD47'>Required: everyone/listonly/off</span><span
+style='font-size:24.0pt;line-height:107%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:white'>Changes smartpass setting.  If smartpass is
+enabled, lootwhore will pass whenever someone else lots an item.  If it is in
+list only mode, this only applies to people on your whitelist in your
+configuration file.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:107%;color:#ED7D31'>/lw rarepass [</span><span style='font-size:
+24.0pt;line-height:107%;color:#70AD47'>Required: on/off</span><span
+style='font-size:24.0pt;line-height:107%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:white'>Changes rarepass setting.  If rarepass is
+enabled, lootwhore will automatically pass anything rare marked that you
+already have.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:107%;color:#ED7D31'>/lw autostack [</span><span style='font-size:
+24.0pt;line-height:107%;color:#70AD47'>Required: on/off</span><span
+style='font-size:24.0pt;line-height:107%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:white'>Changes autostack setting.  While autostack is
+enabled, items in your inventory will be automatically and silently stacked
+together whenever space can be saved by doing so.  Note that this is the same
+setting found in configuration file; the command is just used to overwrite it
+on the current instance and will not persist to next load or alter configuration
+file.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:107%;color:#ED7D31'>/lw zonereset [</span><span style='font-size:
+24.0pt;line-height:107%;color:#70AD47'>Required: on/off</span><span
+style='font-size:24.0pt;line-height:107%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:white'>Changes zonereset setting.  If zonereset is
+enabled, your profile will be reset the next time you zone.  Note that the act
+of resetting profile also clears zonereset, so enabling it will only result in
+a single reset.  This is recommended for safety when using default pass.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:107%;color:#ED7D31'>/lw add [</span><span style='font-size:24.0pt;
+line-height:107%;color:#70AD47'>Required: item id or name</span><span
+style='font-size:24.0pt;line-height:107%;color:#ED7D31'>] [</span><span
+style='font-size:24.0pt;line-height:107%;color:#70AD47'>Required:
+ignore/lot/pass</span><span style='font-size:24.0pt;line-height:107%;
+color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:white'>Adds an item-specific reaction to be performed on
+items in treasure pool.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:107%;color:#ED7D31'>/lw remove [</span><span style='font-size:24.0pt;
+line-height:107%;color:#70AD47'>Required: item id or name</span><span
+style='font-size:24.0pt;line-height:107%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:white'>Clears an item-specific reaction from an item.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:107%;color:#ED7D31'>/lw adddrop [</span><span style='font-size:
+24.0pt;line-height:107%;color:#70AD47'>Required: item id or name</span><span
+style='font-size:24.0pt;line-height:107%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:white'>Adds an item to drop list to be automatically
+dropped whenever it enters inventory.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:107%;color:#ED7D31'>/lw removedrop [</span><span style='font-size:
+24.0pt;line-height:107%;color:#70AD47'>Required: item id or name</span><span
+style='font-size:24.0pt;line-height:107%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:white'>Removes an item from drop list.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:107%;color:#ED7D31'>/lw addstore [</span><span style='font-size:
+24.0pt;line-height:107%;color:#70AD47'>Required: item id or name</span><span
+style='font-size:24.0pt;line-height:107%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:white'>Adds an item to store list to be automatically
+stored whenever a full stack is in inventory.  You can change which bags
+lootwhore will store to in your configuration xml.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:107%;color:#ED7D31'>/lw removestore [</span><span style='font-size:
+24.0pt;line-height:107%;color:#70AD47'>Required: item id or name</span><span
+style='font-size:24.0pt;line-height:107%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:white'>Removes an item from store list.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:107%;color:#ED7D31'>/lw list [</span><span style='font-size:24.0pt;
+line-height:107%;color:#FFC000'>Optional: react/drop/store</span><span
+style='font-size:24.0pt;line-height:107%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:white'>Lists your current item settings.  If you specify
+a type, will only list that type.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:107%;color:#ED7D31'>/lw lot</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:white'>Lots all items you have not yet passed in current
+treasure pool.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:107%;color:#ED7D31'>/lw pass</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:white'>Passes all items you have not yet lotted in
+current treasure pool.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:107%;color:#ED7D31'>/lw help [</span><span style='font-size:24.0pt;
+line-height:107%;color:#FFC000'>Optional: command</span><span style='font-size:
+24.0pt;line-height:107%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:white'>Print information on a command.  If no command is
+specified, a list of commands will be printed.</span></p>
+
+</div>
+
+</body>
+
+</html>
