@@ -314,6 +314,7 @@ void Lootwhore::LoadProfile(const char* Profile)
     }
 
     mState.CurrentProfile = ProfilePath;
+    pOutput->message_f("Loaded profile. [$H%s$R]", ProfilePath.c_str());
     delete XMLReader;
     delete bigbuffer;
 }

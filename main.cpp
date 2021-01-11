@@ -20,34 +20,40 @@ bool Lootwhore::Initialize(IAshitaCore* core, ILogManager* logger, const uint32_
     m_LogManager = logger;
     m_PluginId = id;
 
-    pOutput      = new OutputHelpers(core, logger, this->GetName());
-    pSettings    = new SettingsHelper(core, pOutput, this->GetName());
-    pPacket      = new safePacketInjector(core->GetPacketManager());
-
     MODULEINFO mod = {0};
     ::GetModuleInformation(::GetCurrentProcess(), ::GetModuleHandle("FFXiMain.dll"), &mod, sizeof(MODULEINFO));
     pWardrobe  = Ashita::Memory::FindPattern((uintptr_t)mod.lpBaseOfDll, (uintptr_t)mod.SizeOfImage, "A1????????568BF1578B88????????C1E902F6C101", 0, 0);
     pZoneFlags = Ashita::Memory::FindPattern((uintptr_t)mod.lpBaseOfDll, (uintptr_t)mod.SizeOfImage, "8B8C24040100008B90????????0BD18990????????8B15????????8B82", 0, 0);
 
+    if (pWardrobe == 0)
+    {
+        m_AshitaCore->GetChatManager()->Writef(ERROR_COLOR, false, "%s: Wardrobe status signature scan failed.", Ashita::Chat::Header(GetName()).c_str());
+        return false;
+    }
+
     if (pZoneFlags == 0)
     {
-        m_AshitaCore->GetChatManager()->Write(0, false, "Lootwhore: Zone flag signature scan failed.");
+        m_AshitaCore->GetChatManager()->Writef(ERROR_COLOR, false, "%s: Zone flag signature scan failed.", Ashita::Chat::Header(GetName()).c_str());
         return false;
     }
 
     pZoneOffset = Read32(pZoneFlags, 0x09);
     if (pZoneOffset == 0)
     {
-        m_AshitaCore->GetChatManager()->Write(0, false, "Lootwhore: Zone flag offset not found.");
+        m_AshitaCore->GetChatManager()->Writef(ERROR_COLOR, false, "%s: Zone flag offset not found.", Ashita::Chat::Header(GetName()).c_str());
         return false;
     }
 
     pZoneFlags = Read32(pZoneFlags, 0x17);
     if (pZoneFlags == 0)
     {
-        m_AshitaCore->GetChatManager()->Write(0, false, "Lootwhore: Zone flag sub pointer not found.");
+        m_AshitaCore->GetChatManager()->Writef(ERROR_COLOR, false, "%s: Zone flag sub pointer not found.", Ashita::Chat::Header(GetName()).c_str());
         return false;
     }
+
+    pOutput      = new OutputHelpers(core, logger, this->GetName());
+    pSettings    = new SettingsHelper(core, pOutput, this->GetName());
+    pPacket      = new safePacketInjector(core->GetPacketManager());
 
     mSettings    = Settings_t();
     InitializeCommands();

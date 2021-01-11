@@ -72,11 +72,12 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>Debug</OutDir>
+    <OutDir>Debug\</OutDir>
+    <TargetName>$(ProjectName)_debug</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>Release</OutDir>
+    <OutDir>Release\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -101,7 +102,7 @@
       <ModuleDefinitionFile>exports.def</ModuleDefinitionFile>
     </Link>
     <PostBuildEvent>
-      <Command>copy "Debug\$(ProjectName).dll" "C:\Program Files (x86)\Ashita 4\plugins\$(ProjectName)_debug.dll"</Command>
+      <Command>copy "Debug\$(ProjectName)_debug.dll" "C:\Ashita 4\plugins\$(ProjectName)_debug.dll"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -125,22 +126,12 @@
       <ModuleDefinitionFile>exports.def</ModuleDefinitionFile>
     </Link>
     <PostBuildEvent>
-      <Command>copy "Release\$(ProjectName).dll" "C:\Program Files (x86)\Ashita 4\plugins\$(ProjectName).dll"
-
-
-if not exist "assets\plugins" mkdir "assets\plugins"
-
-if not exist "..\publish\$(ProjectName)\plugins" mkdir "..\publish\$(ProjectName)\plugins"
-
-copy "Release\$(ProjectName).dll" "C:\Program Files (x86)\Ashita 4\plugins\$(ProjectName).dll"
-
-copy "Release\$(ProjectName).dll" "$(SolutionDir)assets\plugins\$(ProjectName).dll"
-
-xcopy "$(SolutionDir)assets\*" "..\..\publish\$(ProjectName)\" /i /e /Y
-
-cd ..\..\publish\$(ProjectName)\
-
-start "C:\Program Files\Git\git-bash.exe"</Command>
+      <Command>if not exist "build\plugins" mkdir "build\plugins"
+if exist "build\$(ProjectName).zip" del "build\$(ProjectName).zip"
+copy "Release\$(ProjectName).dll" "$(SolutionDir)build\plugins\$(ProjectName).dll"
+xcopy "$(SolutionDir)build\*" "C:\Ashita 4\" /i /e /Y
+cd build
+"C:\Program Files\7-Zip\7z.exe" a $(ProjectName).zip * -x!*.zip</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
