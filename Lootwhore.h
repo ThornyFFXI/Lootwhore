@@ -15,6 +15,9 @@
 class Lootwhore : IPlugin
 {
 private:
+    IAshitaCore* m_AshitaCore;
+    ILogManager* m_LogManager;
+    uint32_t m_PluginId;
     OutputHelpers* pOutput;
     SettingsHelper* pSettings;
     safePacketInjector* pPacket;
@@ -51,7 +54,7 @@ public:
     }
     double GetVersion(void) const override
     {
-        return 1.00f;
+        return 1.01f;
     }
     int32_t GetPriority(void) const override
     {

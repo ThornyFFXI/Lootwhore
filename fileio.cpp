@@ -156,9 +156,6 @@ void Lootwhore::SaveSettings(const char* Name)
 
 void Lootwhore::LoadDefaultProfile(bool forceReload)
 {
-    //Reset settings.
-    mProfile = Profile_t();
-
     bool playerFile = true;
     char buffer[1024];
     sprintf_s(buffer, 1024, "%sconfig\\%s\\profiles\\%s.xml", m_AshitaCore->GetInstallPath(), this->GetName(), mState.MyName.c_str());
@@ -173,6 +170,7 @@ void Lootwhore::LoadDefaultProfile(bool forceReload)
 
     if (!std::filesystem::exists(buffer))
     {
+        mProfile = Profile_t();
         //Save a default file so we have it next time.
         SaveProfile("default.xml", true);
     }
