@@ -54,7 +54,7 @@ public:
     }
     double GetVersion(void) const override
     {
-        return 1.02f;
+        return 1.03f;
     }
     int32_t GetPriority(void) const override
     {
