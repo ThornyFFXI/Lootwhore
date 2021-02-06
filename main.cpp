@@ -188,6 +188,7 @@ void Lootwhore::InitializeState()
     //We're ingame, so fill in ID/Name.
     mState.MyId = m_AshitaCore->GetMemoryManager()->GetEntity()->GetServerId(myIndex);
     mState.MyName = m_AshitaCore->GetMemoryManager()->GetEntity()->GetName(myIndex);
+    mState.InventoryLoading = false;
 
     for (int x = 0; x < 10; x++)
     {

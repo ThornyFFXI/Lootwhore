@@ -144,6 +144,7 @@ struct State_t
     uint32_t MyId;
     std::string CurrentProfile;
     bool hasContainer[13];
+    bool InventoryLoading;
 };
 
 struct Profile_t

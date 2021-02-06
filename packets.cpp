@@ -8,6 +8,12 @@ bool Lootwhore::HandleIncomingPacket(uint16_t id, uint32_t size, const uint8_t* 
     UNREFERENCED_PARAMETER(dataChunk);
     UNREFERENCED_PARAMETER(injected);
     UNREFERENCED_PARAMETER(blocked);
+    
+    
+    if (id == 0x0B)
+        mState.InventoryLoading = true;
+    if (id == 0x01D)
+        mState.InventoryLoading = false;
 
     if (id == 0x0A)
     {
@@ -128,5 +134,8 @@ void Lootwhore::HandleOutgoingPacket0x15()
     }
 
     //Address item drop/stores.
-    HandleInventory();
+    if (!mState.InventoryLoading)
+    {
+        HandleInventory();
+    }
 }
