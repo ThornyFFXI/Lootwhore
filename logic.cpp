@@ -112,6 +112,9 @@ void Lootwhore::HandleInventory()
         if (pItem->Id == 0)
             continue;
 
+        if ((pItem->Flags == 5) || (pItem->Flags == 19) || (pItem->Flags == 25))
+            continue;
+
         IItem* pResource = m_AshitaCore->GetResourceManager()->GetItemById(pItem->Id);
         if (!pResource)
             continue;
@@ -140,6 +143,9 @@ void Lootwhore::HandleInventory()
 
                 Ashita::FFXI::item_t* pItem2 = m_AshitaCore->GetMemoryManager()->GetInventory()->GetContainerItem(0, y);
                 if (pItem2->Id != pItem->Id)
+                    continue;
+
+                if ((pItem2->Flags == 5) || (pItem2->Flags == 19) || (pItem2->Flags == 25))
                     continue;
 
                 if (pItem2->Count < pResource->StackSize)
