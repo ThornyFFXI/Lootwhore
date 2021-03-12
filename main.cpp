@@ -197,13 +197,11 @@ void Lootwhore::InitializeState()
         Ashita::FFXI::treasureitem_t* pItem = m_AshitaCore->GetMemoryManager()->GetInventory()->GetTreasurePoolItem(x);
         mState.PoolSlots[x]                 = TreasurePoolSlot_t(pItem);
 
-        //Once current beta version exceeds 2/6 build, this can be updated to not use raw structure.
-        Ashita::FFXI::party_t* pPartyRaw = m_AshitaCore->GetMemoryManager()->GetParty()->GetRawStructure();
         for (int y = 0; y < 18; y++)
         {
             if (pParty->GetMemberIsActive(y))
             {
-                uint16_t lot = ((uint16_t*)pPartyRaw->Members[y].Unknown0003)[x];
+                uint16_t lot = m_AshitaCore->GetMemoryManager()->GetParty()->GetMemberTreasureLot(y, x);
                 if (lot != 0)
                 {
                     mState.PoolSlots[x].LotList.push_back(LotInfo_t(lot, pParty->GetMemberServerId(y), std::string(pParty->GetMemberName(y))));                
