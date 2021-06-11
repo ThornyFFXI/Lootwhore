@@ -21,7 +21,7 @@ void Lootwhore::HandleTreasureSlot(int Slot)
         return;
 
     //Check rarepass first.
-    if (CheckRarePass(treasureItem->Id))
+    if ((mProfile.RarePass) && (CheckRarePass(treasureItem->Id)))
     {
         PassItem(Slot);
         return;
