@@ -50,6 +50,9 @@ void Lootwhore::HandleTreasureSlot(int Slot)
     {
         for (std::list<LotInfo_t>::iterator iter = treasureItem->LotList.begin(); iter != treasureItem->LotList.end(); iter++)
         {
+            if (iter->Lot == 0xFFFF)
+                continue;
+
             if (std::find(mSettings.WhiteList.begin(), mSettings.WhiteList.end(), iter->Name) != mSettings.WhiteList.end())
             {
                 PassItem(Slot);
