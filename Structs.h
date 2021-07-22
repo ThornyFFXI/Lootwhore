@@ -101,22 +101,21 @@ struct TreasurePoolSlot_t
 {
     uint16_t Id;
     LotState Status;
-    std::list<LotInfo_t> LotList;
     uint16_t PacketAttempts;
     std::chrono::steady_clock::time_point LastAction;
+    std::chrono::steady_clock::time_point Lockout;
 
     TreasurePoolSlot_t()
         : Id(0)
         , Status(LotState::Untouched)
-        , LotList(std::list<LotInfo_t>())
         , PacketAttempts(0)
         , LastAction(std::chrono::steady_clock::now() - std::chrono::minutes(5))
+        , Lockout(std::chrono::steady_clock::now())
     {}
 
     TreasurePoolSlot_t(Ashita::FFXI::treasureitem_t* pItem)
     {
         Id = pItem->ItemId;
-        LotList = std::list<LotInfo_t>();
         if (pItem->Lot == 0)
             Status = LotState::Untouched;
         else if (pItem->Lot == 65535)
@@ -125,14 +124,23 @@ struct TreasurePoolSlot_t
             Status = LotState::Lotted;
         PacketAttempts = 0;
         LastAction     = (std::chrono::steady_clock::now() - std::chrono::minutes(5));
+        Lockout        = std::chrono::steady_clock::now();
     }
 
     TreasurePoolSlot_t(uint16_t Id)
         : Id(Id)
         , Status(LotState::Untouched)
-        , LotList(std::list<LotInfo_t>())
         , PacketAttempts(0)
         , LastAction(std::chrono::steady_clock::now() - std::chrono::minutes(5))
+        , Lockout(std::chrono::steady_clock::now())
+    {}
+
+    TreasurePoolSlot_t(uint16_t Id, int lockout)
+        : Id(Id)
+        , Status(LotState::Untouched)
+        , PacketAttempts(0)
+        , LastAction(std::chrono::steady_clock::now() - std::chrono::minutes(5))
+        , Lockout(std::chrono::steady_clock::now() + std::chrono::milliseconds(lockout))
     {}
 };
 
@@ -170,15 +178,21 @@ struct Profile_t
 
 struct Settings_t
 {
-    int MaxRetry;
     bool EnableNomadStorage;
     bool AutoStack;
+    int MaxRetry;
+    int RetryDelay;
+    int RandomDelayMin;
+    int RandomDelayMax;
     std::list<int> ForceEnableBags;
     std::list<int> StoreBags;
     std::list<string> WhiteList;
 
     Settings_t()
         : MaxRetry(3)
+        , RetryDelay(3500)
+        , RandomDelayMin(0)
+        , RandomDelayMax(2500)
         , EnableNomadStorage(false)
         , AutoStack(true)
         , ForceEnableBags(std::list<int>())

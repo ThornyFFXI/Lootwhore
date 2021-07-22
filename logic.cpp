@@ -15,9 +15,8 @@ void Lootwhore::HandleTreasureSlot(int Slot)
     if (treasureItem->PacketAttempts >= mSettings.MaxRetry)
         return;
 
-    //Skip if we've sent a packet for the slot in the last 5 seconds.
-    std::chrono::time_point<std::chrono::steady_clock> comparand = std::chrono::steady_clock::now() - std::chrono::seconds(5);
-    if (comparand < treasureItem->LastAction)
+    //Skip if item is locked out (random delay on drop, additional delay when lotting/passing)
+    if (std::chrono::steady_clock::now() < treasureItem->Lockout)
         return;
 
     //Check rarepass first.
@@ -41,42 +40,55 @@ void Lootwhore::HandleTreasureSlot(int Slot)
             PassItem(Slot);
             return;
         }
-        else
-            return;
     }
 
     //Check SmartPass next.
     if (mProfile.SmartPass == SmartPassSetting::ListOnly)
     {
-        for (std::list<LotInfo_t>::iterator iter = treasureItem->LotList.begin(); iter != treasureItem->LotList.end(); iter++)
+        for (int x = 1; x < 18; x++)
         {
-            if (iter->Lot == 0xFFFF)
+            if (!m_AshitaCore->GetMemoryManager()->GetParty()->GetMemberIsActive(x))
                 continue;
 
-            if (std::find(mSettings.WhiteList.begin(), mSettings.WhiteList.end(), iter->Name) != mSettings.WhiteList.end())
+            uint16_t lot = m_AshitaCore->GetMemoryManager()->GetParty()->GetMemberTreasureLot(x, Slot);
+            if ((lot != 0) && (lot != 0xFFFF))
+            {
+                std::string memberName(m_AshitaCore->GetMemoryManager()->GetParty()->GetMemberName(x));
+                if (std::find(mSettings.WhiteList.begin(), mSettings.WhiteList.end(), memberName) != mSettings.WhiteList.end())
+                {
+                    PassItem(Slot);
+                    return;
+                }
+            }
+        }
+    }
+    else if (mProfile.SmartPass == SmartPassSetting::Everyone)
+    {
+        for (int x = 1; x < 18; x++)
+        {
+            if (!m_AshitaCore->GetMemoryManager()->GetParty()->GetMemberIsActive(x))
+                continue;
+
+            uint16_t lot = m_AshitaCore->GetMemoryManager()->GetParty()->GetMemberTreasureLot(x, Slot);
+            if ((lot != 0) && (lot != 0xFFFF))
             {
                 PassItem(Slot);
                 return;
             }
         }
     }
-    else if (mProfile.SmartPass == SmartPassSetting::Everyone)
+    
+    //Finally, check default action.
+    if (iter->second != LotReaction::Ignore)
     {
-        if (treasureItem->LotList.size() > 0)
+        if (mProfile.DefaultReaction == LotReaction::Lot)
+        {
+            LotItem(Slot);
+        }
+        else if (mProfile.DefaultReaction == LotReaction::Pass)
         {
             PassItem(Slot);
-            return;
         }
-    }
-
-    //Finally, check default action.
-    if (mProfile.DefaultReaction == LotReaction::Lot)
-    {
-        LotItem(Slot);
-    }
-    else if (mProfile.DefaultReaction == LotReaction::Pass)
-    {
-        PassItem(Slot);
     }
 }
 

@@ -20,6 +20,15 @@ void Lootwhore::LoadDefaultSettings(bool forceReload)
     {
         LoadSettings(Path.c_str());
     }
+
+    uint32_t seed = static_cast<uint32_t>(std::chrono::system_clock::now().time_since_epoch().count() + GetCurrentProcessId());
+    if (mSettings.RandomDelayMax != 0)
+    {
+        int minDelay = max(0, mSettings.RandomDelayMin);
+        int maxDelay = max(minDelay + 1, mSettings.RandomDelayMax);
+        mRandomEngine       = std::default_random_engine(seed);
+        mRandomDistribution = std::uniform_int_distribution<int32_t>(minDelay, maxDelay);
+    }
 }
 void Lootwhore::LoadSettings(const char* Name)
 {
@@ -102,6 +111,18 @@ void Lootwhore::LoadSettings(const char* Name)
                     if (_stricmp(SubNode->value(), "disabled") == 0)
                         mSettings.AutoStack = false;
                 }
+                else if (_stricmp(SubNode->name(), "retrydelay") == 0)
+                {
+                    mSettings.RetryDelay = atoi(SubNode->value());
+                }
+                else if (_stricmp(SubNode->name(), "delaymin") == 0)
+                {
+                    mSettings.RandomDelayMin = atoi(SubNode->value());
+                }
+                else if (_stricmp(SubNode->name(), "delaymax") == 0)
+                {
+                    mSettings.RandomDelayMax = atoi(SubNode->value());
+                }
             }        
         }
         else if (_stricmp(Node->name(), "whitelist") == 0)
@@ -141,7 +162,10 @@ void Lootwhore::SaveSettings(const char* Name)
     outstream << "\t\t<autostack>"  << (mSettings.AutoStack ? "enabled" : "disabled") << "</autostack>\n";
     outstream << "\t\t<forceenablebags></forceenablebags>\n";
     outstream << "\t\t<nomadstorage>" << (mSettings.EnableNomadStorage ? "enabled" : "disabled") << "</nomadstorage>\n";
-    outstream << "\t\t<maxretry>" << mSettings.MaxRetry << "</maxretry>\n";
+    outstream << "\t\t<maxretry>" << mSettings.MaxRetry << "</maxretry> <!--Maximum amount of times to try lotting or passing an item if server doesn't respond to indicate packet was received. -->\n";
+    outstream << "\t\t<delaymin>" << mSettings.RetryDelay << "</delaymin> <!--Time, in milliseconds, to wait before retrying a pass or lot. -->\n";
+    outstream << "\t\t<delaymin>" << mSettings.RandomDelayMin << "</delaymin> <!--Minimum time, in milliseconds, to wait before lotting a freshly dropped item. -->\n";
+    outstream << "\t\t<delaymax>" << mSettings.RandomDelayMax << "</delaymax> <!--Maximum time, in milliseconds, to wait before lotting a freshly dropped item.  Set to 0 for instant lots. -->\n";
     outstream << "\t</settings>\n\n";
     outstream << "\t<whitelist> <!--Anyone listed here will trigger smartpass when in 'listonly' mode. -->\n";
     for (std::list<string>::iterator iter = mSettings.WhiteList.begin(); iter != mSettings.WhiteList.end(); iter++)

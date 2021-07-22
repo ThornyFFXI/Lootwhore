@@ -94,7 +94,13 @@ void Lootwhore::HandleIncomingPacket0xD2(uint8_t* modified)
     uint8_t poolIndex = Read8(modified, 0x14);
     uint16_t itemId   = Read16(modified, 0x10);
 
-    mState.PoolSlots[poolIndex]                         = TreasurePoolSlot_t(itemId);
+    int delay = -1;
+    if (mSettings.RandomDelayMax != 0)
+    {
+        delay = mRandomDistribution(mRandomEngine);
+    }
+
+    mState.PoolSlots[poolIndex]                         = TreasurePoolSlot_t(itemId, delay);
 }
 
 void Lootwhore::HandleIncomingPacket0xD3(uint8_t* modified)
@@ -109,14 +115,10 @@ void Lootwhore::HandleIncomingPacket0xD3(uint8_t* modified)
         return;
     }
 
-    //Otherwise, add the lot info to the slot so we can reference it.
-    LotInfo_t build(Read16(modified, 0x12), Read32(modified, 0x08), std::string((const char*)(modified + 0x26)));
-    mState.PoolSlots[poolIndex].LotList.push_back(build);
-
     //If this packet was in regards to us, flag the item.
-    if (build.Id == mState.MyId)
+    if (Read32(modified, 0x08) == mState.MyId)
     {
-        if (build.Lot == 0xFFFF)
+        if (Read16(modified, 0x12) == 0xFFFF)
             mState.PoolSlots[poolIndex].Status = LotState::Passed;
         else
             mState.PoolSlots[poolIndex].Status = LotState::Lotted;

@@ -59,7 +59,7 @@ void Lootwhore::LotItem(int Slot)
     char packet[8]    = {0};
     Write8(packet, 4) = Slot;
     pPacket->addOutgoingPacket_s(0x41, 8, packet);
-    mState.PoolSlots[Slot].LastAction = std::chrono::steady_clock::now();
+    mState.PoolSlots[Slot].Lockout = std::chrono::steady_clock::now() + std::chrono::milliseconds(5000);
     mState.PoolSlots[Slot].PacketAttempts++;
 }
 void Lootwhore::PassItem(int Slot)
@@ -67,7 +67,7 @@ void Lootwhore::PassItem(int Slot)
     char packet[8]    = {0};
     Write8(packet, 4) = Slot;
     pPacket->addOutgoingPacket_s(0x42, 8, packet);
-    mState.PoolSlots[Slot].LastAction = std::chrono::steady_clock::now();
+    mState.PoolSlots[Slot].Lockout = std::chrono::steady_clock::now() + std::chrono::milliseconds(5000);
     mState.PoolSlots[Slot].PacketAttempts++;
 }
 

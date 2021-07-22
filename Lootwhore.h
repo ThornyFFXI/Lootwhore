@@ -11,6 +11,7 @@
 #include "..\common\Settings.h"
 #include "..\common\safePacketInjector.h"
 #include "Structs.h"
+#include <random>
 
 class Lootwhore : IPlugin
 {
@@ -34,6 +35,8 @@ private:
         CommandHelp help;
     };
     std::map<string, CommandInformation, cistringcmp> mCommandMap;
+    std::default_random_engine mRandomEngine;
+    std::uniform_int_distribution<int32_t> mRandomDistribution;
 
 public:
     const char* GetName(void) const override
@@ -54,7 +57,7 @@ public:
     }
     double GetVersion(void) const override
     {
-        return 1.08f;
+        return 1.09f;
     }
     int32_t GetPriority(void) const override
     {
