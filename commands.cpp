@@ -409,9 +409,8 @@ void Lootwhore::HandleCommandLot(std::vector<string> args, int argcount, Command
         if (mState.PoolSlots[x].PacketAttempts >= mSettings.MaxRetry)
             continue;
 
-        //Skip if we've sent a packet for the slot in the last 5 seconds.
-        std::chrono::time_point<std::chrono::steady_clock> comparand = std::chrono::steady_clock::now() - std::chrono::seconds(5);
-        if (comparand < mState.PoolSlots[x].LastAction)
+        //Skip if we currently have this slot locked out.
+        if (std::chrono::steady_clock::now() < mState.PoolSlots[x].Lockout)
             continue;
 
         LotItem(x);
@@ -443,9 +442,8 @@ void Lootwhore::HandleCommandPass(std::vector<string> args, int argcount, Comman
         if (mState.PoolSlots[x].PacketAttempts >= mSettings.MaxRetry)
             continue;
 
-        //Skip if we've sent a packet for the slot in the last 5 seconds.
-        std::chrono::time_point<std::chrono::steady_clock> comparand = std::chrono::steady_clock::now() - std::chrono::seconds(5);
-        if (comparand < mState.PoolSlots[x].LastAction)
+        //Skip if we currently have this slot locked out.
+        if (std::chrono::steady_clock::now() < mState.PoolSlots[x].Lockout)
             continue;
 
         PassItem(x);

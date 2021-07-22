@@ -102,14 +102,12 @@ struct TreasurePoolSlot_t
     uint16_t Id;
     LotState Status;
     uint16_t PacketAttempts;
-    std::chrono::steady_clock::time_point LastAction;
     std::chrono::steady_clock::time_point Lockout;
 
     TreasurePoolSlot_t()
         : Id(0)
         , Status(LotState::Untouched)
         , PacketAttempts(0)
-        , LastAction(std::chrono::steady_clock::now() - std::chrono::minutes(5))
         , Lockout(std::chrono::steady_clock::now())
     {}
 
@@ -123,7 +121,6 @@ struct TreasurePoolSlot_t
         else
             Status = LotState::Lotted;
         PacketAttempts = 0;
-        LastAction     = (std::chrono::steady_clock::now() - std::chrono::minutes(5));
         Lockout        = std::chrono::steady_clock::now();
     }
 
@@ -131,7 +128,6 @@ struct TreasurePoolSlot_t
         : Id(Id)
         , Status(LotState::Untouched)
         , PacketAttempts(0)
-        , LastAction(std::chrono::steady_clock::now() - std::chrono::minutes(5))
         , Lockout(std::chrono::steady_clock::now())
     {}
 
@@ -139,7 +135,6 @@ struct TreasurePoolSlot_t
         : Id(Id)
         , Status(LotState::Untouched)
         , PacketAttempts(0)
-        , LastAction(std::chrono::steady_clock::now() - std::chrono::minutes(5))
         , Lockout(std::chrono::steady_clock::now() + std::chrono::milliseconds(lockout))
     {}
 };

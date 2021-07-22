@@ -163,7 +163,7 @@ void Lootwhore::SaveSettings(const char* Name)
     outstream << "\t\t<forceenablebags></forceenablebags>\n";
     outstream << "\t\t<nomadstorage>" << (mSettings.EnableNomadStorage ? "enabled" : "disabled") << "</nomadstorage>\n";
     outstream << "\t\t<maxretry>" << mSettings.MaxRetry << "</maxretry> <!--Maximum amount of times to try lotting or passing an item if server doesn't respond to indicate packet was received. -->\n";
-    outstream << "\t\t<delaymin>" << mSettings.RetryDelay << "</delaymin> <!--Time, in milliseconds, to wait before retrying a pass or lot. -->\n";
+    outstream << "\t\t<retrydelay>" << mSettings.RetryDelay << "</retrydelay> <!--Time, in milliseconds, to wait before retrying a pass or lot. -->\n";
     outstream << "\t\t<delaymin>" << mSettings.RandomDelayMin << "</delaymin> <!--Minimum time, in milliseconds, to wait before lotting a freshly dropped item. -->\n";
     outstream << "\t\t<delaymax>" << mSettings.RandomDelayMax << "</delaymax> <!--Maximum time, in milliseconds, to wait before lotting a freshly dropped item.  Set to 0 for instant lots. -->\n";
     outstream << "\t</settings>\n\n";
