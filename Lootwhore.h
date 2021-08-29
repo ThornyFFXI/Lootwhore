@@ -41,23 +41,23 @@ private:
 public:
     const char* GetName(void) const override
     {
-        return u8"Lootwhore";
+        return "Lootwhore";
     }
     const char* GetAuthor(void) const override
     {
-        return u8"Thorny";
+        return "Thorny";
     }
     const char* GetDescription(void) const override
     {
-        return u8"Insert description here.";
+        return "Insert description here.";
     }
     const char* GetLink(void) const override
     {
-        return u8"Insert link here.";
+        return "Insert link here.";
     }
     double GetVersion(void) const override
     {
-        return 1.10f;
+        return 1.11f;
     }
     int32_t GetPriority(void) const override
     {

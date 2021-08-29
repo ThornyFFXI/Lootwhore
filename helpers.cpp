@@ -36,9 +36,11 @@ bool Lootwhore::CheckRarePass(uint16_t ItemId)
     {
         if (x == 3)
             continue;
-        int containerMax = m_AshitaCore->GetMemoryManager()->GetInventory()->GetContainerCountMax(x) + 1;
-        for (int y = 0; y < containerMax; y++)
+        int containerMax = m_AshitaCore->GetMemoryManager()->GetInventory()->GetContainerCountMax(x);
+        for (int y = 0; y <= containerMax; y++)
         {
+            if (y == 81)
+                break;
             if (m_AshitaCore->GetMemoryManager()->GetInventory()->GetContainerItem(x, y)->Id == ItemId)
                 return true;
         }
