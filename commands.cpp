@@ -25,7 +25,7 @@ bool Lootwhore::HandleCommand(int32_t mode, const char* command, bool injected)
 
 void Lootwhore::HandleCommandProfile(std::vector<string> args, int argcount, CommandHelp help)
 {
-    if (argcount < 2)
+    if (argcount < 3)
     {
         PrintHelpText(help, true);
     }
@@ -36,7 +36,7 @@ void Lootwhore::HandleCommandProfile(std::vector<string> args, int argcount, Com
 }
 void Lootwhore::HandleCommandExport(std::vector<string> args, int argcount, CommandHelp help)
 {
-    if (argcount < 2)
+    if (argcount < 3)
     {
         if (mState.CurrentProfile == "NO_FILE")
             PrintHelpText(help, true);
