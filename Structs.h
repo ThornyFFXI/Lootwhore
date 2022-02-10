@@ -146,7 +146,7 @@ struct State_t
     std::string MyName;
     uint32_t MyId;
     std::string CurrentProfile;
-    bool hasContainer[13];
+    bool hasContainer[17];
     bool InventoryLoading;
 };
 
@@ -191,7 +191,7 @@ struct Settings_t
         , EnableNomadStorage(false)
         , AutoStack(true)
         , ForceEnableBags(std::list<int>())
-        , StoreBags(std::list<int>{5, 6, 7, 8, 10, 11, 12})
+        , StoreBags(std::list<int>{5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16})
         , WhiteList(std::list<string>())
     {}
 };

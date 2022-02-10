@@ -98,7 +98,7 @@ void Lootwhore::HandleInventory()
     checkBags();
 
     //Calculate free slots for each bag.
-    int FreeSpace[13] = {0};
+    int FreeSpace[17] = {0};
     for (std::list<int>::iterator iter = mSettings.StoreBags.begin(); iter != mSettings.StoreBags.end(); iter++)
     {
         if (!mState.hasContainer[*iter])

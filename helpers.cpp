@@ -1,6 +1,6 @@
 #include "Lootwhore.h"
 
-const char* gContainers[13] =
+const char* gContainers[17] =
     {
         "Inventory",
         "Safe",
@@ -14,11 +14,15 @@ const char* gContainers[13] =
         "Safe2",
         "Wardrobe2",
         "Wardrobe3",
-        "Wardrobe4"};
+        "Wardrobe4",
+        "Wardrobe5",
+        "Wardrobe6",
+        "Wardrobe7",
+        "Wardrobe8"};
 
 std::list<int> gEquipBags =
     {
-        8, 10, 11, 12};
+        8, 10, 11, 12, 13, 14, 15, 16};
 
 std::list<int> gFurnitureTypes =
     {
@@ -32,7 +36,7 @@ bool Lootwhore::CheckRarePass(uint16_t ItemId)
         return false;
 
     //Check if we have the item
-    for (int x = 0; x < 13; x++)
+    for (int x = 0; x < 17; x++)
     {
         if (x == 3)
             continue;
@@ -155,8 +159,9 @@ void Lootwhore::checkBags()
         }
     }
 
-    DWORD Memloc = Read32(pWardrobe, 1);
-    Memloc       = Read32(Memloc, 0);
+    DWORD Memloc  = Read32(pWardrobe, 0);
+    Memloc        = Read32(Memloc, 0);
+    uint8_t flags = Read8(Memloc, 0xB4);
 
     mState.hasContainer[0]  = true;                                                 //Always have inventory.
     mState.hasContainer[1]  = (atNomad || inMog);                                   //Safe
@@ -169,8 +174,12 @@ void Lootwhore::checkBags()
     mState.hasContainer[8]  = true;                                                 //Wardrobe
     mState.hasContainer[9]  = (atNomad || inMog);                                   //Safe2
     mState.hasContainer[10] = true;                                                 //Wardrobe2
-    mState.hasContainer[11] = ((Read8(Memloc, 0xB4) & 0x04) != 0);                  //Wardrobe3
-    mState.hasContainer[12] = ((Read8(Memloc, 0xB4) & 0x08) != 0);                  //Wardrobe4
+    mState.hasContainer[11]              = ((flags & 0x04) != 0);                                //Wardrobe3
+    mState.hasContainer[12]              = ((flags & 0x08) != 0);                                //Wardrobe4
+    mState.hasContainer[13]              = ((flags & 0x10) != 0);                                //Wardrobe5
+    mState.hasContainer[14]              = ((flags & 0x20) != 0);                                //Wardrobe6
+    mState.hasContainer[15]              = ((flags & 0x40) != 0);                                //Wardrobe7
+    mState.hasContainer[16]              = ((flags & 0x80) != 0);                                //Wardrobe8
 
     for (std::list<int>::iterator iter = mSettings.ForceEnableBags.begin(); iter != mSettings.ForceEnableBags.end(); iter++)
     {
