@@ -79,7 +79,7 @@ void Lootwhore::HandleTreasureSlot(int Slot)
     }
     
     //Finally, check default action.
-    if (iter->second != LotReaction::Ignore)
+    if (mProfile.DefaultReaction != LotReaction::Ignore)
     {
         if (mProfile.DefaultReaction == LotReaction::Lot)
         {
