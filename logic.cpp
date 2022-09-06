@@ -26,22 +26,6 @@ void Lootwhore::HandleTreasureSlot(int Slot)
         return;
     }
 
-    //Check individual item lot setting next.
-    std::map<uint16_t, LotReaction>::iterator iter = mProfile.ItemMap.find(treasureItem->Id);
-    if (iter != mProfile.ItemMap.end())
-    {
-        if (iter->second == LotReaction::Lot)
-        {
-            LotItem(Slot);
-            return;
-        }
-        else if (iter->second == LotReaction::Pass)
-        {
-            PassItem(Slot);
-            return;
-        }
-    }
-
     //Check SmartPass next.
     if (mProfile.SmartPass == SmartPassSetting::ListOnly)
     {
@@ -77,9 +61,25 @@ void Lootwhore::HandleTreasureSlot(int Slot)
             }
         }
     }
+
+    //Check individual item lot setting next.
+    std::map<uint16_t, LotReaction>::iterator iter = mProfile.ItemMap.find(treasureItem->Id);
+    if (iter != mProfile.ItemMap.end())
+    {
+        if (iter->second == LotReaction::Lot)
+        {
+            LotItem(Slot);
+            return;
+        }
+        else if (iter->second == LotReaction::Pass)
+        {
+            PassItem(Slot);
+            return;
+        }
+    }
     
     //Finally, check default action.
-    if (mProfile.DefaultReaction != LotReaction::Ignore)
+    else if (mProfile.DefaultReaction != LotReaction::Ignore)
     {
         if (mProfile.DefaultReaction == LotReaction::Lot)
         {
@@ -124,7 +124,7 @@ void Lootwhore::HandleInventory()
             continue;
 
         Ashita::FFXI::item_t* pItem = m_AshitaCore->GetMemoryManager()->GetInventory()->GetContainerItem(0, x);
-        if (pItem->Id == 0)
+        if ((pItem->Id == 0) || (pItem->Count == 0))
             continue;
 
         if ((pItem->Flags == 5) || (pItem->Flags == 19) || (pItem->Flags == 25))

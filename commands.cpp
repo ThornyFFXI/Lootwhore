@@ -13,7 +13,14 @@ bool Lootwhore::HandleCommand(int32_t mode, const char* command, bool injected)
         auto iter = mCommandMap.find(args[1]);
         if (iter == mCommandMap.end())
         {
-            pOutput->error_f("Command not recognized. [$H%s$R]", args[1].c_str());
+            if (argcount == 1)
+            {
+                pOutput->error("Command not specified.");
+            }
+            else
+            {
+                pOutput->error_f("Command not recognized. [$H%s$R]", args[1].c_str());
+            }
             return true;
         }
         (this->*(iter->second.handler))(args, argcount, iter->second.help);     
