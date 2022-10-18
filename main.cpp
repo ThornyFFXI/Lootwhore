@@ -94,6 +94,11 @@ void Lootwhore::InitializeCommands()
     build.help.description = "Sets the default action to be performed on items in treasure pool.";
     mCommandMap.insert(std::make_pair("default", build));
 
+    build.handler          = &Lootwhore::HandleCommandAutoStack;
+    build.help.command     = "/lw autostack [Required: on/off]";
+    build.help.description = "Changes autostack setting.  If autostack is enabled, lootwhore will automatically combine stackable items in your inventory.";
+    mCommandMap.insert(std::make_pair("autostack", build));
+
     build.handler          = &Lootwhore::HandleCommandSmartPass;
     build.help.command     = "/lw smartpass [Required: everyone/listonly/off]";
     build.help.description = "Changes smartpass setting.  If smartpass is enabled, lootwhore will pass whenever someone else lots an item.  If it is in list only mode, this only applies to people on your whitelist in your configuration.";
