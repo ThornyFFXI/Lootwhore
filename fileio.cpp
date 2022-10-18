@@ -123,6 +123,11 @@ void Lootwhore::LoadSettings(const char* Name)
                 {
                     mSettings.RandomDelayMax = atoi(SubNode->value());
                 }
+                else if (_stricmp(SubNode->name(), "silentstack") == 0)
+                {
+                    if (_stricmp(SubNode->value(), "enabled") == 0)
+                        mSettings.SilentStack = true;
+                }
             }        
         }
         else if (_stricmp(Node->name(), "whitelist") == 0)
@@ -166,6 +171,7 @@ void Lootwhore::SaveSettings(const char* Name)
     outstream << "\t\t<retrydelay>" << mSettings.RetryDelay << "</retrydelay> <!--Time, in milliseconds, to wait before retrying a pass or lot. -->\n";
     outstream << "\t\t<delaymin>" << mSettings.RandomDelayMin << "</delaymin> <!--Minimum time, in milliseconds, to wait before lotting a freshly dropped item. -->\n";
     outstream << "\t\t<delaymax>" << mSettings.RandomDelayMax << "</delaymax> <!--Maximum time, in milliseconds, to wait before lotting a freshly dropped item.  Set to 0 for instant lots. -->\n";
+    outstream << "\t\t<silentstack>" << (mSettings.SilentStack ? "enabled" : "disabled") << "</silentstack>\n";
     outstream << "\t</settings>\n\n";
     outstream << "\t<whitelist> <!--Anyone listed here will trigger smartpass when in 'listonly' mode. -->\n";
     for (std::list<string>::iterator iter = mSettings.WhiteList.begin(); iter != mSettings.WhiteList.end(); iter++)

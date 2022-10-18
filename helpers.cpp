@@ -126,10 +126,13 @@ void Lootwhore::MergeItems(Ashita::FFXI::item_t* source, Ashita::FFXI::item_t* d
     packet.ToIndex   = destination->Index;
     packet.Quantity  = min(resource->StackSize - destination->Count, source->Count);
     pPacket->addOutgoingPacket_s(0x29, sizeof(pk_MoveItem), &packet);
-    if (packet.Quantity == 1)
-        pOutput->message_f("Moving a $H%s$R into an existing partial stack.", resource->LogNameSingular[0]);
-    else
-        pOutput->message_f("Moving %d $H%s$R into an existing partial stack.", packet.Quantity, resource->LogNamePlural[0]);
+    if (mSettings.SilentStack == false)
+    {
+        if (packet.Quantity == 1)
+            pOutput->message_f("Moving a $H%s$R into an existing partial stack.", resource->LogNameSingular[0]);
+        else
+            pOutput->message_f("Moving %d $H%s$R into an existing partial stack.", packet.Quantity, resource->LogNamePlural[0]);
+    }
     mState.InventoryLocks[source->Index]      = std::chrono::steady_clock::now();
     mState.InventoryLocks[destination->Index] = std::chrono::steady_clock::now();
 }

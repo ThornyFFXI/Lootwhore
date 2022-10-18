@@ -179,6 +179,7 @@ struct Settings_t
     int RetryDelay;
     int RandomDelayMin;
     int RandomDelayMax;
+    bool SilentStack;
     std::list<int> ForceEnableBags;
     std::list<int> StoreBags;
     std::list<string> WhiteList;
@@ -188,6 +189,7 @@ struct Settings_t
         , RetryDelay(3500)
         , RandomDelayMin(0)
         , RandomDelayMax(2500)
+        , SilentStack(false)
         , EnableNomadStorage(false)
         , AutoStack(true)
         , ForceEnableBags(std::list<int>())
