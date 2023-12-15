@@ -30,6 +30,18 @@ bool Lootwhore::HandleCommand(int32_t mode, const char* command, bool injected)
     return false;
 }
 
+void Lootwhore::HandleCommandImport(std::vector<string> args, int argcount, CommandHelp help)
+{
+    if (argcount < 3)
+    {
+        PrintHelpText(help, true);
+    }
+    else
+    {
+        ImportProfile(args[2].c_str());
+    }
+}
+
 void Lootwhore::HandleCommandProfile(std::vector<string> args, int argcount, CommandHelp help)
 {
     if (argcount < 3)

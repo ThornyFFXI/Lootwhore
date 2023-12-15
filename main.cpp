@@ -74,6 +74,11 @@ void Lootwhore::Release(void)
 void Lootwhore::InitializeCommands()
 {
     CommandInformation build;
+    build.handler          = &Lootwhore::HandleCommandImport;
+    build.help.command     = "/lw import [Required: Profile Name]";
+    build.help.description = "Load an ashitav3 profile, containing settings to determine how items should be treated.  Write it back to file as an ashitav4 profile.";
+    mCommandMap.insert(std::make_pair("import", build));
+
     build.handler          = &Lootwhore::HandleCommandProfile;
     build.help.command = "/lw profile [Required: Profile Name]";
     build.help.description = "Load a profile, containing settings to determine how items should be treated.";

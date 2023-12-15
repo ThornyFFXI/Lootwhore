@@ -216,6 +216,132 @@ void Lootwhore::LoadDefaultProfile(bool forceReload)
         }
     }
 }
+void Lootwhore::ImportProfile(const char* Name)
+{
+    char buffer[1024];
+    sprintf_s(buffer, 1024, "profiles\\%s", Name);
+    std::string ProfilePath = pSettings->GetInputSettingsPath(buffer);
+
+    if (ProfilePath == "FILE_NOT_FOUND")
+    {
+        pOutput->error_f("Could not find profile.  Loading defaults.  [$H%s$R]", Name);
+        LoadDefaultProfile(true);
+        return;
+    }
+
+    //Reset settings.
+    mProfile = Profile_t();
+
+    //Load profile.
+    char* bigbuffer           = NULL;
+    xml_document<>* XMLReader = pSettings->LoadXml(ProfilePath, bigbuffer);
+    if (XMLReader == NULL)
+    {
+        pOutput->error_f("Could not import profile.  Resetting to defaults.  [$H%s$R]", ProfilePath.c_str());
+        return;
+    }
+
+    bool foundBase = false;
+    for (xml_node<>* baseNode = XMLReader->first_node(); baseNode; baseNode = baseNode->next_sibling())
+    {
+        if (_stricmp(baseNode->name(), "lootwhore") == 0)
+        {
+            foundBase = true;
+            for (xml_node<>* Node = baseNode->first_node(); Node; Node = Node->next_sibling())
+            {
+                if (_stricmp(Node->name(), "settings") == 0)
+                {
+                    for (xml_node<>* SubNode = Node->first_node(); SubNode; SubNode = SubNode->next_sibling())
+                    {
+                        if (_stricmp(SubNode->name(), "smartpass") == 0)
+                        {
+                            if (_stricmp(SubNode->value(), "true") == 0)
+                                mProfile.SmartPass = SmartPassSetting::Everyone;
+                            else
+                                mProfile.SmartPass = SmartPassSetting::Disabled;
+                        }
+                        if (_stricmp(SubNode->name(), "rarepass") == 0)
+                        {
+                            mProfile.RarePass = (_stricmp(SubNode->value(), "true") == 0);
+                        }
+                        if (_stricmp(SubNode->name(), "zonereset") == 0)
+                        {
+                            mProfile.ResetOnZone = (_stricmp(SubNode->value(), "true") == 0);
+                        }
+                        if (_stricmp(SubNode->name(), "defaultaction") == 0)
+                        {
+                            if (_stricmp(SubNode->value(), "lot") == 0)
+                                mProfile.DefaultReaction = LotReaction::Lot;
+                            else if (_stricmp(SubNode->value(), "pass") == 0)
+                                mProfile.DefaultReaction = LotReaction::Pass;
+                        }
+                    }
+                }
+                else if (_stricmp(Node->name(), "itemlist") == 0)
+                {
+                    for (xml_node<>* SubNode = Node->first_node(); SubNode; SubNode = SubNode->next_sibling())
+                    {
+                        if (_stricmp(SubNode->name(), "item") == 0)
+                        {
+                            IItem* pResource        = nullptr;
+                            xml_attribute<>* idAttr = SubNode->first_attribute("id");
+                            if (idAttr)
+                            {
+                                pResource = m_AshitaCore->GetResourceManager()->GetItemById(atoi(idAttr->value()));
+                            }
+
+                            if (!pResource)
+                            {
+                                xml_attribute<>* pName = SubNode->first_attribute("name");
+                                if (pName)
+                                {
+                                    pResource = m_AshitaCore->GetResourceManager()->GetItemByName(pName->value(), 0);
+                                }
+                            }
+
+                            if (pResource == nullptr)
+                                continue;
+
+                            auto reaction = LotReaction::Ignore;
+
+                            if (_stricmp(SubNode->value(), "lot") == 0)
+                                reaction = LotReaction::Lot;
+                            else if (_stricmp(SubNode->value(), "pass") == 0)
+                                reaction = LotReaction::Pass;
+                            else if (_stricmp(SubNode->value(), "store") == 0)
+                            {
+                                reaction = LotReaction::Lot;
+                                mProfile.AutoStore.push_back(pResource->Id);
+                            }
+                            else if (_stricmp(SubNode->value(), "drop") == 0)
+                            {
+                                reaction = LotReaction::Pass;
+                                mProfile.AutoDrop.push_back(pResource->Id);
+                            }
+                            
+                            mProfile.ItemMap[pResource->Id] = reaction;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    if (!foundBase)
+    {
+        mState.CurrentProfile = "NO_FILE";
+        delete XMLReader;
+        delete[] bigbuffer;
+        pOutput->error_f("Profile did not have a lootwhore node at root level.  Resetting to defaults.  [$H%s$R]", ProfilePath.c_str());
+        return;
+    }
+
+    mState.CurrentProfile = ProfilePath;
+    pOutput->message_f("Imported profile. [$H%s$R]", ProfilePath.c_str());
+    SaveProfile(ProfilePath.c_str(), false);
+    delete XMLReader;
+    delete bigbuffer;
+}
 void Lootwhore::LoadProfile(const char* Profile)
 {
     char buffer[1024];

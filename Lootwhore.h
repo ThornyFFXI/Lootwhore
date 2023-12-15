@@ -57,7 +57,7 @@ public:
     }
     double GetVersion(void) const override
     {
-        return 1.18f;
+        return 1.19f;
     }
     int32_t GetPriority(void) const override
     {
@@ -76,6 +76,7 @@ public:
 
     //commands.cpp
     bool HandleCommand(int32_t mode, const char* command, bool injected) override;
+    void HandleCommandImport(std::vector<string> args, int argcount, CommandHelp help);
     void HandleCommandProfile(std::vector<string> args, int argcount, CommandHelp help);
     void HandleCommandExport(std::vector<string> args, int argcount, CommandHelp help);
     void HandleCommandReset(std::vector<string> args, int argcount, CommandHelp help);
@@ -101,6 +102,7 @@ public:
     void LoadSettings(const char* Name);
     void SaveSettings(const char* Name);
     void LoadDefaultProfile(bool forceReload);
+    void ImportProfile(const char* Profile);
     void LoadProfile(const char* Profile);
     void SaveProfile(const char* Profile, bool AppendPath);
 	
