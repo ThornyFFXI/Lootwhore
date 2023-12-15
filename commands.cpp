@@ -131,7 +131,11 @@ void Lootwhore::HandleCommandZoneReset(std::vector<string> args, int argcount, C
         mProfile.ResetOnZone = false;
     pOutput->message_f("ZoneReset $H%s$R.", mProfile.ResetOnZone ? "enabled" : "disabled");
 }
-void Lootwhore::HandleCommandAdd(std::vector<string> args, int argcount, CommandHelp help)
+const char* reactionNames[3] = {
+"Ignore",
+"Lot",
+"Pass"};
+void::Lootwhore::HandleCommandAdd(std::vector<string> args, int argcount, CommandHelp help)
 {
     if (argcount < 4)
     {
@@ -142,8 +146,12 @@ void Lootwhore::HandleCommandAdd(std::vector<string> args, int argcount, Command
     LotReaction reaction = LotReaction::Unknown;
     if (CheckArg(3, "lot"))
         reaction = LotReaction::Lot;
+    else if (CheckArg(3, "store"))
+        reaction  = LotReaction::Lot;
     else if (CheckArg(3, "pass"))
         reaction = LotReaction::Pass;
+    else if (CheckArg(3, "drop"))
+        reaction  = LotReaction::Pass;
     else if (CheckArg(3, "ignore"))
         reaction = LotReaction::Ignore;
     else
@@ -165,7 +173,18 @@ void Lootwhore::HandleCommandAdd(std::vector<string> args, int argcount, Command
     }
 
     mProfile.ItemMap[item->Id] = reaction;
-    pOutput->message_f("$H%s$R set to $H%s$R.", item->Name[0], args[3].c_str());
+    pOutput->message_f("$H%s$R set to $H%s$R.", item->Name[0], reactionNames[(int)reaction]);
+
+    if (CheckArg(3, "store"))
+    {
+        mProfile.AutoStore.push_back((uint16_t)item->Id);
+        pOutput->message_f("Added $H%s$R to store list.", item->Name[0]);
+    }
+    if (CheckArg(3, "drop"))
+    {
+        mProfile.AutoDrop.push_back((uint16_t)item->Id);
+        pOutput->message_f("Added $H%s$R to drop list.", item->Name[0]);
+    }
 }
 void Lootwhore::HandleCommandRemove(std::vector<string> args, int argcount, CommandHelp help)
 {
