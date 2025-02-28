@@ -1,7 +1,14 @@
 # Lootwhore
 Lootwhore is a plugin that allows you to automate lotting, passing, dropping items from inventory, and moving stacks of items from inventory to other bags.  This is done through a profile file, which can be edited manually(see *ashita/docs/lootwhore/profilexmlstructure.xml*) or by using typed commands ingame.  Profiles should be stored in ashita/config/lootwhore/profiles.  Lootwhore also has a configuration file that allows you to tweak several settings that cannot be changed from inside the game(see *ashita/docs/lootwhore/configxmlstructure.xml*).  Configuration files should be stored as *ashita/config/lootwhore/default.xml* or *ashita/config/lootwhore/Playername.xml*.  Lootwhore will prefer a player-specific config file to the default file, allowing you to change settings for each character.
 
-Commands
+# Installation
+Do not download the entire repository as a zip unless you plan to compile the plugin yourself. That will not provide the files you need.<br>
+
+1. Download the plugin release zip that matches your ashita installation's interface version from the releases area on the right side.
+2. Extract the entire zip to your ashita folder(the folder containing ashita.dll and ashita-cli.exe). Everything will fall into place.
+3. Load with '/load lootwhore' or add the same line to your startup script. Lootwhore is a plugin not an addon, so do not use '/addon load'.
+
+# Commands
 All commands can be prefixed with **/lw** or **/lootwhore**.<br>
 Any parameter that includes a space must be enclosed in quotation marks(**"**).
 
