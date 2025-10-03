@@ -5,7 +5,7 @@
 #pragma once
 #endif
 
-#include "C:\Users\Garre\FFXI\Ashita 4\plugins\sdk\Ashita.h"
+#include "Ashita.h"
 #include "..\common\Utilities.h"
 #include "..\common\Output.h"
 #include "..\common\Settings.h"
